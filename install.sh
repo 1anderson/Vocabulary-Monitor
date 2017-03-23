@@ -1,25 +1,19 @@
+#echo $(pwd)
 #mkdir  $NODE_NAME
-#java -jar ~/Documentos/VocabularyAnalizer/VocabularyExtractor.jar -d . -loc iah -vxl $WORKSPACE/$NODE_NAME/Vocabulary.vxl -csv $WORKSPACE/$NODE_NAME/#Vocabulary.csv -mth
-#java -jar ~/Documentos/VocabularyAnalizer/TermsCounter.jar -prop ~/Documentos/VocabularyAnalizer/termsCounter.properties -vxl $WORKSPACE/$NODE_NAME/#Vocabulary.vxl -csv $WORKSPACE/$NODE_NAME/csv_result_file.csv -txt $WORKSPACE/$NODE_NAME/txt_result_file.txt
+#java -jar ~/Documentos/VocabularyMonitor/VocabularyExtractor.jar -d . -loc iah -vxl $WORKSPACE/$NODE_NAME/Vocabulary.vxl -csv $WORKSPACE/$NODE_NAME/Vocabulary.csv -mth
+#java -jar ~/Documentos/VocabularyMonitor/TermsCounter.jar -prop ~/Documentos/VocabularyMonitor/termsCounter.properties -vxl $WORKSPACE/$NODE_NAME/Vocabulary.vxl -csv $WORKSPACE/#$NODE_NAME/csv_result_file.csv -txt $WORKSPACE/$NODE_NAME/txt_result_file.txt -db $WORKSPACE/$NODE_NAME/terms.csv $WORKSPACE/$NODE_NAME/entities.csv $WORKSPACE/$NODE_NAME/termsXentities.csv
 
-#echo "$BUILD_NUMBER"
-#echo "$BUILD_ID"
-#echo "$NODE_NAME"
-#echo "$GIT_URL"
+if [ -e $WORKSPACE/date.txt ]; then
+ echo "existe"
+ $(touch $WORKSPACE/date.txt)
+else
+ echo "não existe"
+ $(touch $WORKSPACE/date.txt)
+fi 
 
-echo "$BUILD_NUMBER"
-echo "$BUILD_ID"
-echo "$BUILD_DISPLAY_NAME"
-echo "$JOB_NAME"
-echo "$JOB_BASE_NAME"
-echo "$BUILD_TAG"
-echo "$NODE_LABELS"
-echo "$WORKSPACE"
-echo "$JENKINS_HOME"
-echo "$BUILD_URL"
-echo "$JOB_BASE_NAME"
-echo "$JOB_URL"
-echo "$BUILD_ID"
+#$(date +%Y/%m/%d)
+#~/Documentos/VocabularyMonitor/script.sh anderson metallica mydb $WORKSPACE/$NODE_NAME/ $(date +%Y/%m/%d) $GIT_COMMIT
+
 
 
 

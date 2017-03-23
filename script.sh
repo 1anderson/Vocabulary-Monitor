@@ -7,7 +7,7 @@ csvPath=$4
 snapshotGitDate=$5  
 hashCommit=$6
 
-echo "$1 $2 $3 $4 $5"
+echo "$1 $2 $3 $4 $5 $6"
 
 mysql -u$user -p$pass <<EOF
 use vocabulary_db;
