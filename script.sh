@@ -8,7 +8,7 @@ snapshotGitDate=$5
 before_date=$6 
 hashCommit=$7
 
-echo "$1 $2 $3 $4 $5 $6"
+ echo " datas ->" "$snapshotGitDate" "$before_date"
 
 mysql -u$user -p$pass <<EOF
 use history_db;
