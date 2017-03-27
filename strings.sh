@@ -5,6 +5,7 @@ password=$2
 myDb=$3
 repositoryPath=$4
 repositoryAtual=$(pwd)
+dateAfter='' 
 #Declaration of variables#
 
 #Declaration of functions#
@@ -32,7 +33,7 @@ $(git log --reverse --format="%H %ci" > historyCommits.txt)
 
 hashCommit=$(head -n 1 historyCommits.txt | awk '{print $1}')
 dateCommit=$(head -n 1 historyCommits.txt | awk '{print $2}')
-
+dateAfter=$(head -n 1 historyCommits.txt | awk '{print $2}')
 $(mv historyCommits.txt ../)
 
 changePathOfExecution $repositoryAtual
@@ -45,9 +46,10 @@ while read f1 f2
    $(git checkout $hashCommit)
    changePathOfExecution ../
    extractVocabularyFromThisVersion ./temporaryFolder
-   saveVocabularyWithinTheDatabase $user $password $myDb $dateCommit $hashCommit
+   saveVocabularyWithinTheDatabase $user $password $myDb $dateCommit $dateAfter $hashCommit
   fi
 hashCommit=$f1
+dateAfter=$dateCommit
 dateCommit=$(echo $f2 | awk '{print $1}') 
 done < historyCommits.txt
 rm -rf ./temporaryFolder/

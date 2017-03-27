@@ -1,0 +1,20 @@
+DELIMITER $$
+CREATE PROCEDURE gerando_tabelas_de_sumarização (IN data_atual DATE,IN data_anterior DATE)
+BEGIN
+
+CREATE TEMPORARY TABLE snapshot_atual SELECT * from terms_table where build_id=data_atual;
+CREATE TEMPORARY TABLE snapshot_anterior SELECT * from terms_table where build_id=data_anterior;
+create table nascidos select name,fk_snapshot_git_date from snapshot_atual where name NOT IN (select name from snapshot_anterior);
+
+END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE gerando_tabelas_de_sumarização (IN data_atual DATE,IN data_anterior DATE)
+BEGIN  
+CREATE TEMPORARY TABLE snapshot_atual SELECT * from terms where fk_snapshot_git_date=data_atual; CREATE TEMPORARY TABLE snapshot_anterior SELECT * from terms where fk_snapshot_git_date=data_anterior; 
+create table nascidos select name,fk_snapshot_git_date from snapshot_atual where name NOT IN (select name from snapshot_anterior);
+create table falecidos select name, fk_snapshot_git_date from snapshot_anterior where name  NOT IN (select name from snapshot_atual);
+create table top_terms select * from terms where fk_snapshot_git_date=data_atual ORDER BY quantity DESC LIMIT 10;
+END $$ 
+DELIMITER ;
