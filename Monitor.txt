@@ -1,0 +1,16 @@
+#------------------------#------------------------#------------------------#------------------------#---------------------------#
+Insira o nome de usuário e senha nos campos abaixo logo após o ":" não utilize espaços, não altere o documento de nenhuma forma.
+#------------------------#------------------------#------------------------#------------------------#---------------------------#
+
+user:anderson	
+password:metallica
+
+
+
+#------------------------#
+Exemplo:  
+
+user:usuário 
+password:senha
+
+#------------------------#

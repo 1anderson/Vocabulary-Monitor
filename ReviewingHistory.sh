@@ -14,7 +14,7 @@ java -jar ./VocabularyExtractor.jar -d $1 -loc iah -vxl ./temporaryFolder/filesG
 java -jar ./TermsCounter.jar -prop ./termsCounter.properties -vxl ./temporaryFolder/filesGeneratedAfterExtraction/Vocabulary.vxl -csv ./temporaryFolder/filesGeneratedAfterExtraction/csv_result_file.csv -txt ./temporaryFolder/filesGeneratedAfterExtraction/txt_result_file.txt -db ./temporaryFolder/filesGeneratedAfterExtraction/terms.csv ./temporaryFolder/filesGeneratedAfterExtraction/entities.csv ./temporaryFolder/filesGeneratedAfterExtraction/termsXentities.csv
 }
 function saveVocabularyWithinTheDatabase(){
-         ./script.sh $1 $2 $3 './temporaryFolder/filesGeneratedAfterExtraction' $4 $5 $6
+         ./WriterDataBase.sh $1 $2 $3 './temporaryFolder/filesGeneratedAfterExtraction' $4 $5 $6
 }
 function changePathOfExecution() {
   cd $1/
