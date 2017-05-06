@@ -3,7 +3,7 @@ Insira o nome de usuário e senha nos campos abaixo logo após o ":" não utiliz
 #------------------------#------------------------#------------------------#------------------------#---------------------------#
 
 user:anderson	
-password:metallica
+password:senha123
 
 
 
