@@ -26,6 +26,8 @@ que ocorreu a extração) e executar stored procedures.
 
 É preciso a JVM para que seja possível executar as bibliotecas java.
 
+É preciso possuir o Git instalado.
+
 É necessário executar Initializer antes de executar Vocabulary Monitor para a criação da base de dados, tabelas e stored procedures.
 
 
