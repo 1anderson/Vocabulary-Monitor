@@ -2,7 +2,7 @@
 
 user=$1
 password=$2
-listOfUrls=$4
+listOfUrls=$3
 
 function downloadingProject(){
     git clone $1;
@@ -16,7 +16,8 @@ do
   databaseName=$(echo $line | awk -v FS="(./|.git)" '{print $(NF-1)}')
   echo $databaseName
   downloadingProject $url
-  ./ReviewingHistory $user $password $databaseName $databaseName
+  ./Initializer.sh $user $password $databaseName
+  ./ReviewingHistory.sh $user $password $databaseName $databaseName
 
   rm -rf $databaseName
   
