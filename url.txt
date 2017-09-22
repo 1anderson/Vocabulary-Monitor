@@ -1,0 +1,4 @@
+https://github.com/1anderson/Repositorios-e-estatistica-de-vocabularios.git
+https://github.com/1anderson/BaseDeDadosTCC.git
+https://github.com/1anderson/GameConcentration.git
+https://github.com/1anderson/AsoE.git
