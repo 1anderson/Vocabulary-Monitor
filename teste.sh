@@ -12,16 +12,15 @@ url=''
 repositoryName=''
 while read -r line || [[ -n $line ]];
 do
-  url=$line 
+  url=$line
   databaseName=$(echo $line | awk -v FS="(./|.git)" '{print $(NF-1)}')
   repositoryName=$databaseName;
-  #echo $databaseName
   databaseName=$(echo $databaseName | awk '{gsub(/-/,"_",$databaseName); print $databaseName}')
   downloadingProject $url
   ./Initializer.sh $user $password $databaseName
   ./ReviewingHistory.sh $user $password $databaseName $repositoryName
 
-  rm -rf $databaseName
+  rm -rf $repositoryName
   
 done < $listOfUrls
 

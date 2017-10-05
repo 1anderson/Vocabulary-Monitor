@@ -16,34 +16,28 @@ java -jar ./TermsCounter.jar -prop ./termsCounter.properties -vxl ./temporaryFol
 function saveVocabularyWithinTheDatabase(){
          ./WriterDataBase.sh $1 $2 $3 './temporaryFolder/filesGeneratedAfterExtraction' $4 $5 $6
 }
-function changePathOfExecution() {
-  cd $1/
-}
+
 #Declaration of Functions#
 
 mkdir -p temporaryFolder/filesGeneratedAfterExtraction
 
-changePathOfExecution $repositoryPath
+echo $(pwd)
+cp -r $repositoryPath/. $repositoryAtual/temporaryFolder; 
 
-cp -r $repositoryPath/. $repositoryAtual/temporaryFolder
-
-changePathOfExecution $repositoryAtual/temporaryFolder
-
-$(git log --reverse --format="%H %ci" > historyCommits.txt)
+cd $repositoryAtual/temporaryFolder/ && $(git log --reverse --format="%H %ci" > historyCommits.txt)
+echo $(pwd)
 
 hashCommit=$(head -n 1 historyCommits.txt | awk '{print $1}')
 dateCommit=$(head -n 1 historyCommits.txt | awk '{print $2}')
 dateAfter=$dateCommit
-$(mv historyCommits.txt ../)
-
-changePathOfExecution $repositoryAtual
+$(mv historyCommits.txt ../) && cd ../
 
 while read f1 f2
  do
   if [[ $dateCommit < $(echo $f2 | awk '{print $1}') ]]; then
-   changePathOfExecution ./temporaryFolder
+   cd temporaryFolder/
    $(git checkout $hashCommit)
-   changePathOfExecution ../
+   cd ../
    extractVocabularyFromThisVersion ./temporaryFolder
    saveVocabularyWithinTheDatabase $user $password $myDb $dateCommit $dateAfter $hashCommit
    dateAfter=$dateCommit
