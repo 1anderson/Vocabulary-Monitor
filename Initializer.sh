@@ -2,10 +2,25 @@ user=$1
 password=$2
 database=$3
 
+if [[ ! $user ]]; 
+  then
+    echo "ERR: User is required" 1>&2
+    exit 1
+elif [[ ! $password ]]; 
+  then
+     echo "ERR: Password is required" 1>&2
+     exit 1
+elif [[ ! $database ]]; 
+  then
+     echo "ERR: Database is required" 1>&2
+     exit 1
+fi
+
 RESULT=`mysql -u $user -p$password --skip-column-names -e "SHOW DATABASES LIKE '$database'"`
-if [ "$RESULT" == $database ]; then
-   echo "Bando de dados com esse nome já existe, escolha outro nome"
-   exit	
+if [ "$RESULT" == $database ]; 
+  then
+   echo "ERR: Banco de dados com esse nome já existe, por favor, escolha outro nome"
+   exit	1
 fi
 
 mysql -u$user -p$password <<EOF
