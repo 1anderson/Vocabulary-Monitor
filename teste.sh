@@ -17,13 +17,13 @@ do
   repositoryName=$databaseName;
   #echo $databaseName
   databaseName=$(echo $databaseName | awk '{gsub(/-/,"_",$databaseName); print $databaseName}')
-  #downloadingProject $url
+  downloadingProject $url
   ./Initializer.sh $user $password $databaseName
   ./ReviewingHistory.sh $user $password $databaseName $repositoryName
 
-  #rm -rf $databaseName
+  rm -rf $databaseName
   
-done < url.txt
+done < $listOfUrls
 
 
 
